@@ -1,0 +1,286 @@
+@import 'zones.css';
+  
+/* Base fonts, etc. */
+
+body * {
+  font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+}
+
+
+/* rotating banner + transitions */
+/*
+#slideshow {
+  position: relative;
+  width: 720px;
+  height: 300px;
+  margin: 2em auto;
+  padding: 0.5em;
+  z-index: 0;
+}
+*/
+
+
+/* If in full DSL wall mode - 100% */
+
+.wall #slideshow {
+  width: 7680px;
+  height: 3240px;
+  z-index: 0;
+  /*border: 1px solid red;*/
+  position: absolute; top: 0; left: 0
+}
+
+/* If in test mode - 10% size */
+
+.test #slideshow {
+  width: 768px;
+  height: 324px;
+  margin: 0 auto;
+}
+
+html, body.secondary {
+  height: 100%;
+  width: 100%;
+}
+
+
+#slideshow img, #slideshow div {
+  transition         : all 1s;
+  -o-transition      : all 1s;
+  -moz-transition    : all 1s;
+  -webkit-transition : all 1s;
+}
+
+/* cross-fade effect */
+
+.crossfade #slideshow img, .crossfade #slideshow div {
+  opacity: 0;
+}
+.crossfade #slideshow img[smil=active], .crossfade #slideshow div[smil=active] {
+  opacity: 1;
+}
+
+/* fade-through effect */
+body.fadethrough > div {
+  overflow: hidden;
+}
+.fadethrough #slideshow img {
+  opacity: 0;
+}
+.fadethrough #slideshow img[smil=done] {
+  transform         : scale(1.5) translate(0, -10%);
+  -o-transform      : scale(1.5) translate(0, -10%);
+  -moz-transform    : scale(1.5) translate(0, -10%);
+  -webkit-transform : scale(1.5) translate(0, -10%);
+}
+.fadethrough #slideshow img[smil=active] {
+  opacity: 1;
+}
+
+/* slide-in effect */
+
+.slide #slideshow {
+  overflow: hidden;
+}
+.slide #slideshow img[smil=idle] {
+  transform         : translate(0, +310px);
+  -o-transform      : translate(0, +310px);
+  -moz-transform    : translate(0, +310px);
+  -webkit-transform : translate(0, +310px);
+}
+.slide #slideshow img[smil=done] {
+  transform         : translate(0, -310px);
+  -o-transform      : translate(0, -310px);
+  -moz-transform    : translate(0, -310px);
+  -webkit-transform : translate(0, -310px);
+}
+
+/* toss effect */
+body.toss > div {
+  overflow: hidden;
+}
+.toss #slideshow img {
+  opacity: 0;
+}
+.toss #slideshow img[smil=idle] {
+  transform         : rotate(-30deg) translate(-80px, -240px);
+  -o-transform      : rotate(-30deg) translate(-80px, -240px);
+  -moz-transform    : rotate(-30deg) translate(-80px, -240px);
+  -webkit-transform : rotate(-30deg) translate(-80px, -240px);
+}
+.toss #slideshow img[smil=active] {
+  opacity: 1;
+}
+
+/* flip effect */
+
+.clip #slideshow img {
+  opacity: 0;
+}
+.clip #slideshow img[smil=idle] {
+  /* clip: rect(150px, 360px, 150px, 360px); */
+  clip: rect(130px, 310px, 170px, 410px);
+}
+.clip #slideshow img[smil=active] {
+  opacity: 1;
+  clip: rect(0, 720px, 300px, 0);
+}
+
+/* disable all transitions */
+
+.none #slideshow img {
+  visibility: hidden;
+  transition         : none;
+  -o-transition      : none;
+  -moz-transition    : none;
+  -webkit-transition : none;
+}
+.none #slideshow img[smil=active] {
+  visibility: visible;
+}
+
+#transitionSelector button:hover {
+  text-decoration: underline;
+}
+.none        button.none,
+.crossfade   button.crossfade,
+.fadethrough button.fadethrough,
+.slide       button.slide,
+.toss        button.toss,
+.clip        button.clip {
+  text-decoration: underline;
+  color: brown !important;
+}
+
+
+
+
+
+
+
+/* DSL elements */
+
+/* Generic image container */
+
+.image {
+  /*background-size:cover;*/
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+
+/* Text panel */
+
+.textpanel {
+  text-align:center;
+  color:white;
+}
+
+.textpanel > * {
+  left: 0;
+  width: 100%; 
+}
+
+.textpanel > * { 
+  position: absolute; 
+  top: 50%; 
+  margin: 0;
+}
+
+.test .textpanel.h3 {
+  line-height: 108px; 
+}
+
+.textpanel.h3 {
+  line-height: 1080px; 
+}
+
+/* Fullscreen textpanel - for carts and mobiles */
+
+.fullscreen-textpanel {
+  text-align:center;
+  color:white;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; 
+  /* height: 100% of viewport - done with JS */
+}
+
+.fullscreen-textpanel > * { 
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 50%; 
+  margin: 0;
+}
+
+/* Fullscreen textpanel without the autoresizing of text 
+  (JS looks for .fullscreen-textpanel class
+*/
+
+
+.fullscreen-textpanel-2 {
+  text-align:center;
+  color:white;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; 
+  /* height: 100% of viewport - done with JS */
+}
+
+.fullscreen-textpanel-2 > * { 
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 50%; 
+  margin: 0;
+}
+
+/* Specific overrides */
+
+body.secondary {
+  padding: 5%;
+}
+
+body.secondary #slideshow > * { 
+  width: 100%; 
+}
+
+body.secondary #slideshow iframe {
+  height: 1000px;
+}
+
+body.secondary #slideshow #zoom-demo {
+  height: 1000px;
+}
+
+.control-buttons span span { /* For distributed-control slide */
+  display: inline-block;
+  margin: 0.25em;
+  padding: 0.25em;
+  border: 0.2em solid white;
+  height: .5em; width: .5em;
+  color: black;
+}
+
+/* Slow scroll for panorama */
+
+#garibaldi img {
+  transition         : margin-left 160s;
+  -o-transition      : margin-left 160s;
+  -moz-transition    : margin-left 160s;
+  -webkit-transition : margin-left 160s;
+}
+
+#caserta iframe { border: none }
+
+#dsl-navigator {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: white;
+  border: 2px solid #aaa;
+  padding: 1em;
+}
+

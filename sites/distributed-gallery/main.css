@@ -1,0 +1,23 @@
+/* Styles for the Distributed Gallery project */
+
+body.wall{
+  background-color: black;
+}
+body.wall #slideshow,
+body.wall #slideshow > div {
+  width: 100%;
+  height: 1080px;
+}
+
+body.mobile {
+  padding: 5%;
+}
+
+body.mobile #slideshow {
+  width: 90%;
+}
+
+body.mobile #slideshow > div {
+  padding: 5%;
+  width: 90%;
+}

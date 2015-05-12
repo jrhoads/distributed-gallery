@@ -1,0 +1,61 @@
+
+
+/*
+ * 
+ * These positions have been calibrated for the DSL wall running under Firefox
+ * Where the numbers have been manually changed, I've noted the theoretical value
+ * 
+ */
+
+body { 
+  overflow: hidden;
+}
+
+#slideshow > div > * { position: absolute }
+.c1, .c2, .c3, .c4, .r1, .r2, .r3 { position: absolute }
+
+#slideshow > div { 
+  position: absolute; top: 0; left: 0;
+}
+
+.c1 { left: 0      }
+.c2 { left: 1920px } /* 1921 */
+.c3 { left: 3840px } /* 3842 */
+.c4 { left: 5760px } /* 5763 */
+
+.r1 { top: 0      }
+.r2 { top: 1079px } /* Should be 1081 */
+.r3 { top: 2158px } /* Should be 2162 */
+
+.w1 { width: 1920px } /* 1920 */
+.w2 { width: 3840px } /* 3840 */
+.w3 { width: 5760px }
+.w4 { width: 7680px }
+
+.h1 { height: 1079px } /* Should be 1080 */
+.h2 { height: 2160px }
+.h3 { height: 3240px }
+
+.test .c1 { left: 0      }
+.test .c2 { left: 192px } /* 1921 */
+.test .c3 { left: 384px } /* 3842 */
+.test .c4 { left: 576px } /* 5763 */
+
+.test .r1 { top: 0      }
+.test .r2 { top: 109px } /* Should be 1081 */
+.test .r3 { top: 216px } /* Should be 2162 */
+
+.test .w1 { width: 192px } /* 1920 */
+.test .w2 { width: 384px } /* 3840 */
+.test .w3 { width: 576px }
+.test .w4 { width: 768px }
+
+.test .h1 { height: 108px } /* Should be 1080 */
+.test .h2 { height: 216px }
+.test .h3 { height: 324px }
+
+/* iframe exceptions
+   iframes are slightly different from div's */
+   
+iframe.h1 { height: 1075px }
+iframe.w1 { width:  1916px }

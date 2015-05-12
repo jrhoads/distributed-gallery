@@ -1,0 +1,32 @@
+{
+    "id": 3, 
+    "name": "ScholarlyNetworksColloquium", 
+    "owner": "John_Cayley@brown.edu", 
+    "presentations": [
+        {
+            "pid": "bdr:413963",
+            "duration": 60,
+            "title": "pry"
+        }, 
+        {
+            "pid": "bdr:413964", 
+            "duration": 30,
+            "title": "spreedr"
+        },
+        {
+            "pid": "bdr:413961", 
+            "duration": 60,
+            "title": "joyride"
+        }, 
+        {
+            "pid": "bdr:413962", 
+            "duration": 30,
+            "title": "spreedr"
+        },
+        {
+            "pid": "bdr:413944", 
+            "duration": 60,
+            "title": "fact"
+        }
+    ]
+}
