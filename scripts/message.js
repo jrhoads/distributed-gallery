@@ -40,12 +40,13 @@ define(['https://js.pusher.com/2.0/pusher.min.js', 'jquery'], function (p, $) {
 
       */
 
-  return function (clientRole, CONFIG) {
+  return function (clientRole, siteInstance, CONFIG) {
 
     var pusher, channels, onReceive, send,
         pusherId = 'ccd0e24bbd911bcef19d',
-        channelName = CONFIG.id, // only dealing with app, not individual clients (yet)
-        getFullRecipientId = function (role) { return role + '-' + CONFIG.id; };
+        channelName = CONFIG.id + '-' + siteInstance, // only dealing with app+instance, not individual clients (yet)
+        // getFullRecipientId = function (role) { return role + '-' + CONFIG.id; };
+        getFullRecipientId = function (role) { return channelName + '-' + role };
 
     // Enable pusher logging - don't include this in production
 

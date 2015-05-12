@@ -24,9 +24,26 @@ define(['message', 'page-transform', 'jquery', 'slide-factory', 'config.js'],
       ALL THIS NEEDS TO GET RE-THOUGHT ....
       
       */
+      
+  // Parse URL Queries
+  // adapted from http://www.kevinleary.net/jquery-parse-url/
+  
+  function getUrlQuery(query) {
+  
+    var queryEscapedBrackets = query.replace(/[\[]/,'\\\[').replace(/[\]]/,'\\\]'),
+        expr = '[\\?&]' + queryEscapedBrackets + '=([^&#]*)',
+        regex = new RegExp(expr),
+        results;
+    
+    results = regex.exec(window.location.href);
+    
+    return (results !== null) ? results[1] : false;
+  }
+
   
   function getClientRole () { // CHANGE AND TEST THIS
     
+    /* VERSION 2
     var role,
         pathHeirarchy,
         match1 = /role=([^&#]*)/.exec(window.location.search);
@@ -40,8 +57,10 @@ define(['message', 'page-transform', 'jquery', 'slide-factory', 'config.js'],
       role = (/^(\w+)(?:\.\w{3,4})?$/.exec(pathHeirarchy.pop()))[1];
       
     } 
+    */
     
-    /********
+    /******** VERSION 1
+    
     else if (false) { // FIX THIS - else if ... what?
       
       var pathHeirarchy = window.location.pathname.split('/'),
@@ -61,7 +80,17 @@ define(['message', 'page-transform', 'jquery', 'slide-factory', 'config.js'],
     }
     *********/
     
+    var role = getUrlQuery('role') || 'wall';
     console.log('* Role identified as ' + role);
+    return role;
+  }
+  
+  // You should be able to run several instances of the same site;
+  //  e.g. for testing, for running on different displays, etc.
+  
+  function getSiteInstance () {    
+    var role = getUrlQuery('instance') || 'default_instance';
+    console.log('* Instance identified as ' + role);
     return role;
   }
   
@@ -267,7 +296,8 @@ define(['message', 'page-transform', 'jquery', 'slide-factory', 'config.js'],
   function init(getMessageObject, getPageTransformFunction, CONFIG) {
     
     var clientRole = getClientRole(),
-        messageObject = getMessageObject(clientRole, CONFIG);
+        siteInstance = getSiteInstance(),
+        messageObject = getMessageObject(clientRole, siteInstance, CONFIG);
     
     updateContainerClass(clientRole);
     loadjQueryPlugins(['jquery.fittext', 'jquery.qrcode.min']);
@@ -277,6 +307,7 @@ define(['message', 'page-transform', 'jquery', 'slide-factory', 'config.js'],
     
     return {
       clientRole: clientRole,
+      siteInstance: siteInstance,
       message: messageObject,
       getSlide: slideFactory,
       config: CONFIG,
