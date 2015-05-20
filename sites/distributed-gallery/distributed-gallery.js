@@ -245,7 +245,7 @@ define(['jquery', 'BDR'], function ($, BDR) {
     getProgramWithInfo(programId, function (programData) {
       var programLength = programData.presentations.length;
       programData.presentations.forEach(function(presData, index) {
-        presData.orderInProgram = index;
+        presData.orderInProgram = index+1;
         presData.programLength = programLength;
         html += getPresentationHTML(presData);
       });
