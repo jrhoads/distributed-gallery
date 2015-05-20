@@ -143,7 +143,6 @@ define(['jquery', 'BDR'], function ($, BDR) {
   /** Get a program & get additional info for each presentation, then call fn(programData) */
 
   getProgramWithInfo = function (programId, fn) {
-    console.log('GO: ' + programId);
     getProgram(programId, function (programData) {
 
       var numberOfPresentations = programData.presentations.length,
@@ -184,7 +183,6 @@ define(['jquery', 'BDR'], function ($, BDR) {
 
   var getCreatorsHTML = function(creators){
     var snippit = ""
-    console.log(creators);
     snippit += "<h2>Creators</h2>";
     snippit += "<ul>";
     creators.forEach (function(creator){
@@ -210,30 +208,30 @@ define(['jquery', 'BDR'], function ($, BDR) {
                  
     return embedCode;
   };
+  
+  var wallPresentationHTML= function( presData ){
+    var embedCode = "",
+        domId = makeDomIdFromBDRPid(presData.pid);
+    embedCode = '<div id="' + domId + '"' +
+                'data-timecontainer="par" data-dur="' + presData.duration + '">' +
+                  '<iframe data-role="wall" src="'+presData.embedCode+'" '+
+                  'style="position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:1080px; '+
+                  'border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"'+
+                      '" data-onbegin="' +
+                        'DSL.message.send(\'goto\',\'mobile\', \'' + domId + '\');">' +
+                      "Your browser doesn't support IFrames"+
+                  '</iframe>'+
+                '</div>';
+    return embedCode;
+  };
 
   getPresentationHTML = function (presData) {
-    console.log('Creating Presentation HTML');
-    console.log(presData);
-    var embedCode,
-        domId = makeDomIdFromBDRPid(presData.pid);
+    var embedCode;
 
     if (DSL.clientRole === 'wall') {
-      embedCode = '<div id="' + domId + '"' +
-                  'data-timecontainer="par" data-dur="' + presData.duration + '">' +
-                    '<iframe data-role="wall" src="'+presData.embedCode+'" '+
-                    'style="position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:1080px; '+
-                    'border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"'+
-                        '" data-onbegin="' +
-                          'DSL.message.send(\'goto\',\'mobile\', \'' + domId + '\');">' +
-                        "Your browser doesn't support IFrames"+
-                    '</iframe>'+
-                  '</div>';
+      embedCode = wallPresentationHTML(presData);
     } else {
       embedCode = mobilePresentationHTML(presData);
-    }
-
-    if (presData.embedCode) {
-      // signView = presData.embedCode;
     }
 
     return embedCode;

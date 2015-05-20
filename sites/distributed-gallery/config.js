@@ -61,7 +61,6 @@ define(['jquery', 'distributed-gallery.js'], function ($, DG) {
       'wall' : ['this', 'is', 'a', 'test'],
       'cart-1' : ['carts', 'secondary'],
       'cart-2' : ['carts', 'secondary'],
-      'mobile' : ['secondary']
     },
 
     'preTransform': function (dsl, doTransform) {
@@ -88,7 +87,6 @@ define(['jquery', 'distributed-gallery.js'], function ($, DG) {
         //  prior to TimesheetsJS doing its thing
         // (there's got to be a better way)
         window.setTimeout(doTransform, 8000);
-        // doTransform();
       });
 
     },

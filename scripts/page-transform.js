@@ -68,21 +68,21 @@ ORIGINAL:
 
       // Apply fittext jQuery plugin to textpanel widgets
 
-      require(['jquery.fittext'], function (x) {
-        setTimeout(function() { // This can be fixed by turning off transitions during setup
-          $('.textpanel').fitText();
-          $('.fullscreen-textpanel').fitText();
-        }, 2000);
-      });
+      //require(['jquery.fittext'], function (x) {
+        //setTimeout(function() { // This can be fixed by turning off transitions during setup
+          //$('.textpanel').fitText();
+          //$('.fullscreen-textpanel').fitText();
+        //}, 2000);
+      //});
       
       // If an element is marked 'fullheight', make it the full height of display
       // (good for iframes) -- also onresize to handle changes
 
-      $('.fullheight').css('height', $(window).height());
+      //$('.fullheight').css('height', $(window).height());
       
-      $( window ).resize(function() {
-        $('.fullheight').css('height', $(window).height());
-      });
+      //$( window ).resize(function() {
+        //$('.fullheight').css('height', $(window).height());
+      //});
       
       // Set fullscreen textpanel heights
 
