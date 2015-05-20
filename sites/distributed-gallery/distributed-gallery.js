@@ -165,7 +165,6 @@ define(['jquery', 'BDR'], function ($, BDR) {
           presentation.duration = presentation.duration + 's';
 
           infoLoadedCount += 1;
-          console.log('Got info for ' + presentation.pid + ' count=' + infoLoadedCount);
 
           // Test to see if all the additional data for all the slides have been loaded
 
