@@ -1,0 +1,31 @@
+{
+    "id": 3, 
+    "name": "Visualization and Creativity in Immersive 3D Environments",
+    "owner": "John_Cayley@brown.edu",
+    "presentations": [
+        {
+            "pid": "bdr:402262",
+            "duration": 60
+        },
+        {
+            "pid": "bdr:263018",
+            "duration": 30
+        },
+        {
+            "pid": "bdr:262993",
+            "duration": 60
+        },
+        {
+            "pid": "bdr:262981",
+            "duration": 30
+        },
+        {
+            "pid": "bdr:262974",
+            "duration": 60
+        },
+        {
+            "pid": "bdr:262966",
+            "duration": 30
+        }
+    ]
+}

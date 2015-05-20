@@ -67,7 +67,6 @@ define(['jquery', 'distributed-gallery.js'], function ($, DG) {
 
       // This fires just before the standard DSL transformation
 
-      console.log('* distributed-gallery/config is doing pre-transform');
       if (dsl.clientRole === 'wall') {
         dsl.message.onReceive('current_presentation', function () {
 
@@ -80,7 +79,7 @@ define(['jquery', 'distributed-gallery.js'], function ($, DG) {
 
       var ss = $('#' + dsl.config.slideshowContainerId), i;
 
-      DG.getProgramHTML(1, function (html) {
+      DG.getProgramHTML(3, function (html) {
         ss.append(html);
 
         // Delay the transform so that the DOM updates
@@ -97,7 +96,6 @@ define(['jquery', 'distributed-gallery.js'], function ($, DG) {
       // START HACK FOR DISTRIBUTED GALLERY: get current presentation for mobile
       window.setTimeout(function() {
         if (dsl.clientRole === 'mobile') {
-          console.log('* Updating to current slide');
           dsl.message.send('current_presentation', 'wall', 0);
         };
       }, 1500);

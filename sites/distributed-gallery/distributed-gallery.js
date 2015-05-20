@@ -144,7 +144,6 @@ define(['jquery', 'BDR'], function ($, BDR) {
 
   getProgramWithInfo = function (programId, fn) {
     getProgram(programId, function (programData) {
-
       var numberOfPresentations = programData.presentations.length,
           infoLoadedCount = 0;
 
@@ -205,10 +204,9 @@ define(['jquery', 'BDR'], function ($, BDR) {
                    '<p>Length of current presentation ' +presData.duration+".</p>" +
                    '</div>' +
                  '</div>';
-                 
     return embedCode;
   };
-  
+
   var wallPresentationHTML= function( presData ){
     var embedCode = "",
         domId = makeDomIdFromBDRPid(presData.pid);
